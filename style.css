@@ -1,0 +1,951 @@
+/* Design tokens: colors, radii, sizes.
+  Дизайн-токены: цвета, радиусы, размеры. */
+:root {
+  --bg: #060508;
+  --bg-soft: #111018;
+  --text: #f3efff;
+  --text-muted: #b5afc7;
+  --line: rgba(255, 255, 255, 0.11);
+  --accent: #ff4fd8;
+  --accent-2: #905dff;
+  --card: #171422;
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --header-h: 88px;
+  --container: 1240px;
+}
+
+/* Base reset and global behavior.
+  Базовый сброс и глобальное поведение. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Smooth anchor scrolling fallback (JS still handles header offset).
+  Плавный скролл по якорям (JS дополнительно учитывает высоту хедера). */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Main page atmosphere and typography.
+  Основная атмосфера страницы и типографика. */
+body {
+  font-family: "Manrope", sans-serif;
+  background:
+    radial-gradient(60% 80% at 100% -10%, rgba(255, 79, 216, 0.15), transparent 70%),
+    radial-gradient(50% 70% at -10% 20%, rgba(144, 93, 255, 0.2), transparent 65%),
+    var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Shared layout container.
+  Общий контейнер макета. */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* Sticky glass header.
+  Фиксированная полупрозрачная шапка. */
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(18px);
+  background: rgba(6, 5, 8, 0.76);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Top navigation row.
+  Верхняя строка навигации. */
+.nav {
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Brand mark styles.
+  Стили логотипа. */
+.logo {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -1px;
+}
+
+.logo span {
+  color: var(--accent);
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* Desktop navigation links.
+  Десктопные навигационные ссылки. */
+.menu {
+  display: flex;
+  gap: 30px;
+  color: var(--text-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+}
+
+.menu a {
+  transition: color 0.28s ease;
+}
+
+.menu a:hover {
+  color: var(--accent);
+}
+
+/* Burger button appears on smaller screens.
+  Кнопка-бургер для небольших экранов. */
+.menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin: 4px auto;
+  background: var(--text);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+/* Shared button transitions for smooth interactions.
+  Общие анимации кнопок для плавного взаимодействия. */
+.order-btn,
+.btn {
+  transition: transform 0.28s ease, box-shadow 0.28s ease, background-color 0.28s ease, color 0.28s ease, border-color 0.28s ease;
+}
+
+.order-btn {
+  padding: 12px 22px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.order-btn:hover {
+  background: var(--accent);
+  color: #1d0320;
+}
+
+/* Hero section split into text and image columns.
+  Hero-блок делится на текстовую и визуальную колонку. */
+.hero {
+  min-height: calc(100vh - var(--header-h));
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 72px;
+  align-items: center;
+  padding-top: 52px;
+  padding-bottom: 60px;
+}
+
+/* Accent subtitle style reused in section headings.
+  Акцентный подзаголовок, переиспользуемый в секциях. */
+.hero-sub,
+.section-title p {
+  color: #ff93ea;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+/* Main headline with fluid scaling.
+  Главный заголовок с адаптивным масштабированием. */
+.hero h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(46px, 9vw, 108px);
+  line-height: 0.94;
+  letter-spacing: -1.8px;
+  margin-bottom: 24px;
+}
+
+/* Gradient text accent.
+  Градиентный акцент для текста. */
+.gradient {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-text {
+  color: var(--text-muted);
+  font-size: clamp(16px, 2.1vw, 20px);
+  max-width: 620px;
+  margin-bottom: 34px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 46px;
+}
+
+.btn {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  border-radius: 14px;
+  border: 0;
+  font-weight: 700;
+  font-size: 14px;
+  appearance: none;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background-color: #b04fff;
+  background-image: linear-gradient(100deg, var(--accent) 0%, #c452ff 52%, var(--accent-2) 100%);
+  background-size: 120% 100%;
+  background-position: center;
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(255, 79, 216, 0.32), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.btn-secondary {
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.btn-secondary:hover {
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+/* Hero KPI row.
+  Ряд с ключевыми метриками. */
+.stats {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.stat h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 32px;
+  margin-bottom: 4px;
+}
+
+.stat p {
+  color: #8f88a6;
+  font-size: 14px;
+}
+
+/* Hero media card.
+  Карточка с главным изображением. */
+.image-card {
+  position: relative;
+  border-radius: 34px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+}
+
+.image-card img {
+  width: 100%;
+  height: min(78vh, 780px);
+  display: block;
+  object-fit: cover;
+}
+
+.hero-ba-slider {
+  aspect-ratio: 823 / 1152;
+  width: min(100%, 560px);
+  height: auto;
+  max-height: min(78vh, 780px);
+  justify-self: center;
+  border-radius: 34px;
+}
+
+.before,
+.after {
+  position: absolute;
+  top: 22px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: rgba(10, 9, 14, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  font-size: 11px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.before {
+  left: 22px;
+}
+
+.after {
+  right: 22px;
+}
+
+/* Section title block.
+  Блок заголовка секции. */
+.section-title {
+  margin-bottom: 44px;
+}
+
+.section-title h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(34px, 5.4vw, 66px);
+  line-height: 0.98;
+  letter-spacing: -1.1px;
+}
+
+/* Vertical spacing for main content sections.
+  Вертикальные отступы основных секций. */
+.reasons,
+.portfolio,
+.reviews,
+.about,
+.order {
+  padding-top: 82px;
+  padding-bottom: 82px;
+}
+
+/* Reasons grid with short value statements.
+  Сетка преимуществ с короткими тезисами о ценности студии. */
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.reason-card {
+  min-height: 230px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(25, 21, 37, 0.82), rgba(10, 8, 15, 0.88));
+}
+
+.reason-card span {
+  display: inline-block;
+  margin-bottom: 34px;
+  color: #ff93ea;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.reason-card h3 {
+  margin-bottom: 12px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 22px;
+  line-height: 1.08;
+}
+
+.reason-card p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Portfolio cards grid.
+  Сетка карточек портфолио. */
+.portfolio-head {
+  margin-bottom: 44px;
+}
+
+.portfolio-head .section-title {
+  margin-bottom: 0;
+}
+
+.portfolio-controls {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+}
+
+.portfolio-arrow {
+  position: absolute;
+  top: 50%;
+  width: 46px;
+  height: 46px;
+  border: 0;
+  border-radius: 50%;
+  background: #050507;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 18px;
+  pointer-events: auto;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+  transform: translateY(-50%);
+  transition: transform 0.24s ease, background-color 0.24s ease;
+}
+
+.portfolio-arrow-prev {
+  left: max(0px, calc((100% - var(--portfolio-card-width)) / 2 - 23px));
+}
+
+.portfolio-arrow-next {
+  right: max(0px, calc((100% - var(--portfolio-card-width)) / 2 - 23px));
+}
+
+.portfolio-arrow:hover {
+  transform: translateY(-50%) scale(1.06);
+  background: #15111f;
+}
+
+.portfolio-carousel {
+  --portfolio-card-width: min(78vw, 760px);
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-track {
+  position: relative;
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  padding: 0 max(0px, calc((100% - var(--portfolio-card-width)) / 2)) 10px;
+  scrollbar-width: none;
+}
+
+.portfolio-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Portfolio card hover interactions.
+  Hover-эффекты карточек портфолио. */
+.work-card {
+  flex: 0 0 var(--portfolio-card-width);
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  height: clamp(380px, 42vw, 575px);
+  min-height: 380px;
+  isolation: isolate;
+  scroll-snap-align: center;
+  border: 1px solid var(--line);
+  background: #0c0a13;
+}
+
+.work-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.01);
+  transition: transform 0.55s ease, filter 0.45s ease;
+}
+
+.work-card:hover img {
+  transform: scale(1.08);
+  filter: saturate(1.1);
+}
+
+/* Overlay content that softly appears over image.
+  Контент поверх изображения с мягким появлением. */
+.overlay {
+  position: absolute;
+  inset: 0;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(to top, rgba(2, 2, 4, 0.85) 0%, rgba(2, 2, 4, 0.06) 65%);
+  transform: translateY(8px);
+  opacity: 0.95;
+  transition: transform 0.32s ease, opacity 0.32s ease;
+}
+
+.work-card:hover .overlay {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.overlay h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+.overlay p {
+  color: #ccc6de;
+  margin-bottom: 14px;
+}
+
+.work-tag {
+  width: fit-content;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.21);
+  background: rgba(12, 10, 18, 0.65);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Before/After slider shell.
+  Оболочка слайдера До/После. */
+.ba-slider {
+  --position: 56%;
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  height: min(72vh, 640px);
+  background: #0d0a14;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+}
+
+.ba-slider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--position);
+  width: 2px;
+  background: rgba(255, 255, 255, 0.82);
+  transform: translateX(-1px);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.ba-before,
+.ba-after {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* The after layer width is controlled by CSS variable --position.
+  Ширина слоя after управляется переменной --position. */
+.ba-after-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  overflow: hidden;
+  clip-path: inset(0 0 0 var(--position));
+}
+
+.ba-label {
+  position: absolute;
+  top: 18px;
+  z-index: 4;
+  padding: 8px 13px;
+  border-radius: 999px;
+  background: rgba(10, 10, 12, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+}
+
+.ba-label-before {
+  left: 18px;
+}
+
+.ba-label-after {
+  right: 18px;
+}
+
+/* Invisible range input captures drag gestures.
+  Невидимый range-input принимает жесты перетаскивания. */
+.ba-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+  z-index: 6;
+}
+
+/* Visual handle synced with divider position.
+  Визуальный бегунок синхронизирован с позицией разделителя. */
+.ba-handle {
+  position: absolute;
+  top: 50%;
+  left: var(--position);
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: rgba(8, 8, 10, 0.7);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.ba-handle::before,
+.ba-handle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.ba-handle::before {
+  left: 10px;
+  transform: translateY(-50%) rotate(-135deg);
+}
+
+.ba-handle::after {
+  right: 10px;
+}
+
+.about-text {
+  max-width: 780px;
+  color: var(--text-muted);
+  font-size: clamp(16px, 2vw, 21px);
+}
+
+/* Reviews layout with testimonials and gated review form.
+  Макет отзывов с карточками клиентов и формой после заказа. */
+.reviews-layout {
+  max-width: 980px;
+}
+
+.reviews-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.review-card {
+  min-height: 240px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(25, 21, 37, 0.82), rgba(10, 8, 15, 0.88));
+}
+
+.review-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 38px;
+}
+
+.review-topline strong {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 20px;
+}
+
+.review-topline span {
+  color: #ff93ea;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.review-card p {
+  color: var(--text-muted);
+}
+
+/* Order form card.
+  Карточка формы заказа. */
+.order-form {
+  max-width: 780px;
+  display: grid;
+  gap: 16px;
+  padding: 24px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(25, 21, 37, 0.8), rgba(13, 11, 19, 0.85));
+}
+
+.order-form label {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  color: #d9d3ea;
+}
+
+/* Form controls and focus states.
+  Поля формы и состояние фокуса. */
+.order-form input,
+.order-form select,
+.order-form textarea {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  padding: 13px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  color: #fff;
+  font: inherit;
+  outline: none;
+}
+
+.order-form select {
+  appearance: none;
+  padding-right: 52px;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23f3efff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 18px 18px;
+}
+
+.order-form input[type="file"] {
+  cursor: pointer;
+}
+
+.order-form input[type="file"]::file-selector-button {
+  margin-right: 14px;
+  border: 0;
+  border-radius: 10px;
+  padding: 9px 13px;
+  background: rgba(255, 79, 216, 0.16);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.field-hint {
+  color: #8f88a6;
+  font-size: 12px;
+}
+
+.order-form select option {
+  background: #120f1b;
+}
+
+.order-form input:focus,
+.order-form select:focus,
+.order-form textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 79, 216, 0.15);
+}
+
+.form-status {
+  min-height: 24px;
+  font-size: 14px;
+  color: #ff9df0;
+}
+
+.footer {
+  padding: 26px 28px 40px;
+  color: #8f88a6;
+  font-size: 13px;
+}
+
+/* Tablet and small laptop adjustments.
+  Адаптация для планшетов и небольших ноутбуков. */
+@media (max-width: 1080px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 38px;
+    min-height: calc(100vh - var(--header-h));
+  }
+
+  .reasons-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .portfolio-carousel {
+    --portfolio-card-width: min(80vw, 640px);
+  }
+
+  .order-btn {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+    /* On mobile/tablet, menu turns into a floating panel.
+      На мобильных/планшетах меню становится выпадающей панелью. */
+  .menu {
+    position: absolute;
+    top: calc(var(--header-h) + 10px);
+    left: 20px;
+    right: 20px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: rgba(17, 14, 25, 0.96);
+    backdrop-filter: blur(10px);
+    display: grid;
+    gap: 10px;
+    padding: 18px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  body.nav-open .menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  body.nav-open .menu-toggle span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  body.nav-open .menu-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  body.nav-open .menu-toggle span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+}
+
+/* Phone-specific compact layout.
+  Компактный макет для телефонов. */
+@media (max-width: 760px) {
+  :root {
+    --header-h: 76px;
+  }
+
+  .container {
+    padding: 0 18px;
+  }
+
+  .hero {
+    align-items: start;
+    gap: 34px;
+    min-height: auto;
+    padding-top: 28px;
+    padding-bottom: 48px;
+  }
+
+  .logo {
+    font-size: 30px;
+  }
+
+  .reasons,
+  .portfolio,
+  .reviews,
+  .about,
+  .order {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .reasons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reason-card {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .reason-card span {
+    margin-bottom: 22px;
+  }
+
+  .reviews-list {
+    grid-template-columns: 1fr;
+  }
+
+  .review-card {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .review-topline {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+
+  .portfolio-head {
+    margin-bottom: 28px;
+  }
+
+  .portfolio-carousel {
+    --portfolio-card-width: min(84vw, 430px);
+  }
+
+  .portfolio-track {
+    gap: 16px;
+    padding-bottom: 8px;
+  }
+
+  .work-card {
+    height: 340px;
+    min-height: 340px;
+  }
+
+  .ba-slider {
+    height: 350px;
+  }
+
+  .hero-ba-slider {
+    width: min(100%, 430px);
+    height: auto;
+    max-height: none;
+  }
+
+  .stats {
+    gap: 20px;
+  }
+
+  .stat h3 {
+    font-size: 28px;
+  }
+
+  .order-form {
+    padding: 18px;
+  }
+
+  .footer {
+    padding-bottom: max(72px, calc(44px + env(safe-area-inset-bottom)));
+  }
+}
+
+/* Accessibility: reduce motion if user requested it.
+  Доступность: уменьшаем анимации по системной настройке пользователя. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}

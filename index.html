@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DO Studio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!--
+  Header section with logo, navigation menu, mobile menu button, and order link.
+  Верхняя часть сайта с логотипом, навигацией, кнопкой мобильного меню и ссылкой на заказ.
+-->
+<header>
+  <div class="container nav">
+
+    <!--
+      Website logo shown on the left side of the header.
+      Логотип сайта, который отображается слева в шапке.
+    -->
+    <div class="logo">
+      DO
+      <span>STUDIO</span>
+    </div>
+
+    <!--
+      Mobile menu button; JavaScript uses it to open and close the navigation.
+      Кнопка мобильного меню; JavaScript открывает и закрывает навигацию через нее.
+    -->
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!--
+      Main navigation links that scroll to different sections of the page.
+      Основные ссылки навигации, которые прокручивают страницу к нужным секциям.
+    -->
+    <nav class="menu">
+      <a href="#home">Home</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#compare">Before / After</a>
+      <a href="#about">About</a>
+      <a href="#order">Order</a>
+    </nav>
+
+    <!--
+      Header call-to-action button that sends the visitor to the order form.
+      Кнопка призыва к действию в шапке, которая ведет к форме заказа.
+    -->
+    <a href="#order" class="order-btn">Order Editing</a>
+
+  </div>
+</header>
+
+<!--
+  Main page content with all visible sections of the portfolio website.
+  Основное содержимое страницы со всеми видимыми секциями сайта-портфолио.
+-->
+<main>
+<!--
+  Hero section: the first screen with headline, buttons, stats, and a preview image.
+  Главная секция: первый экран с заголовком, кнопками, статистикой и изображением.
+-->
+<section id="home" class="hero container">
+
+  <!--
+    Hero text column with the main marketing message.
+    Текстовая колонка главной секции с основным рекламным сообщением.
+  -->
+  <div>
+
+    <!--
+      Small subtitle that explains the studio niche.
+      Маленький подзаголовок, который объясняет направление студии.
+    -->
+    <div class="hero-sub">
+      Creative Photo Editing & AI Visuals
+    </div>
+
+    <!--
+      Main headline that gives the page its strongest visual focus.
+      Главный заголовок, который создает основной визуальный акцент страницы.
+    -->
+    <h1>
+      Digital art.<br>
+      <span class="gradient">Perfected.</span>
+    </h1>
+
+    <!--
+      Short description of the studio services.
+      Краткое описание услуг студии.
+    -->
+    <p class="hero-text">
+      Professional retouching, AI edits, collages, restoration and creative digital work for clients all over the world.
+    </p>
+
+    <!--
+      Hero action buttons for viewing work or starting an order.
+      Кнопки действий: посмотреть работы или перейти к заказу.
+    -->
+    <div class="hero-buttons">
+      <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
+      <a href="#order" class="btn btn-secondary">Order Editing</a>
+    </div>
+
+    <!--
+      Quick trust stats that make the studio look more established.
+      Краткая статистика для доверия и ощущения опыта студии.
+    -->
+    <div class="stats">
+
+      <!--
+        First statistic card: studio experience.
+        Первая карточка статистики: опыт студии.
+      -->
+      <div class="stat">
+        <h3>10+</h3>
+        <p>Years experience</p>
+      </div>
+
+      <!--
+        Second statistic card: audience size.
+        Вторая карточка статистики: размер аудитории.
+      -->
+      <div class="stat">
+        <h3>400K+</h3>
+        <p>Followers</p>
+      </div>
+
+      <!--
+        Third statistic card: support availability.
+        Третья карточка статистики: доступность поддержки.
+      -->
+      <div class="stat">
+        <h3>24/7</h3>
+        <p>Client support</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!--
+    Hero image column with labels that suggest an editing transformation.
+    Колонка с изображением и метками, которые показывают идею обработки фото.
+  -->
+  <div class="hero-image">
+
+    <!--
+      Image card that holds the main portrait and before/after labels.
+      Карточка изображения с главным портретом и метками до/после.
+    -->
+    <div class="image-card">
+
+      <span class="before">Before</span>
+      <span class="after">After</span>
+
+      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1400&auto=format&fit=crop" alt="">
+
+    </div>
+
+  </div>
+
+</section>
+
+<!--
+  Portfolio section with selected examples of studio work.
+  Секция портфолио с выбранными примерами работ студии.
+-->
+<section id="portfolio" class="portfolio container">
+
+  <!--
+    Portfolio heading and carousel controls.
+    Заголовок портфолио и кнопки управления каруселью.
+  -->
+  <div class="portfolio-head">
+    <div class="section-title">
+      <p>Portfolio</p>
+      <h2>Selected Works</h2>
+    </div>
+  </div>
+
+  <!--
+    Horizontal carousel viewport for portfolio cards.
+    Горизонтальная карусель для карточек портфолио.
+  -->
+  <div class="portfolio-carousel" aria-label="Selected portfolio works">
+    <div class="portfolio-controls" aria-label="Portfolio carousel controls">
+      <button class="portfolio-arrow portfolio-arrow-prev" type="button" data-carousel-prev aria-label="Previous work">
+        <span aria-hidden="true">&larr;</span>
+      </button>
+      <button class="portfolio-arrow portfolio-arrow-next" type="button" data-carousel-next aria-label="Next work">
+        <span aria-hidden="true">&rarr;</span>
+      </button>
+    </div>
+
+    <div class="portfolio-track">
+
+    <!--
+      Portfolio card for beauty retouching; the overlay appears on hover.
+      Карточка ретуши; затемнение с текстом появляется при наведении.
+    -->
+    <div class="work-card">
+      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1200&auto=format&fit=crop">
+      <div class="overlay">
+        <h3>Beauty Retouch</h3>
+        <p>Professional skin & color editing</p>
+        <span class="work-tag">Skin / Color</span>
+      </div>
+    </div>
+
+    <!--
+      Portfolio card for AI art and creative visual work.
+      Карточка AI-art и креативной визуальной обработки.
+    -->
+    <div class="work-card">
+      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop">
+      <div class="overlay">
+        <h3>AI Art</h3>
+        <p>Creative AI generated visuals</p>
+        <span class="work-tag">Prompt Design</span>
+      </div>
+    </div>
+
+    <!--
+      Portfolio card for old photo restoration and repair.
+      Карточка восстановления и ремонта старых фотографий.
+    -->
+    <div class="work-card">
+      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop">
+      <div class="overlay">
+        <h3>Restoration</h3>
+        <p>Old photo restoration and repair</p>
+        <span class="work-tag">Archive Repair</span>
+      </div>
+    </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!--
+  Before/after comparison section with an interactive image slider.
+  Секция сравнения до/после с интерактивным слайдером изображения.
+-->
+<section id="compare" class="compare container">
+  <!--
+    Section title for the comparison area.
+    Заголовок секции сравнения.
+  -->
+  <div class="section-title">
+    <p>Before / After</p>
+    <h2>See The Difference</h2>
+  </div>
+
+  <!--
+    Slider wrapper; CSS reads --position and JavaScript updates it from the range input.
+    Обертка слайдера; CSS читает --position, а JavaScript меняет его через range input.
+  -->
+  <div class="ba-slider" data-start="56">
+    <!--
+      Base image layer that represents the original photo.
+      Базовый слой изображения, который показывает оригинальное фото.
+    -->
+    <img class="ba-before" src="https://images.unsplash.com/photo-1464863979621-258859e62245?q=80&w=1400&auto=format&fit=crop" alt="Original portrait">
+
+    <!--
+      Top image layer that is clipped to reveal the edited version.
+      Верхний слой изображения, который обрезается и показывает обработанную версию.
+    -->
+    <div class="ba-after-wrap">
+      <img class="ba-after" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1400&auto=format&fit=crop" alt="Edited portrait">
+    </div>
+
+    <!--
+      Visual labels for the two sides of the comparison.
+      Визуальные метки для двух сторон сравнения.
+    -->
+    <div class="ba-label ba-label-before">Before</div>
+    <div class="ba-label ba-label-after">After</div>
+
+    <!--
+      Invisible range input that captures dragging and controls the divider.
+      Невидимый range input ловит перетаскивание и управляет разделителем.
+    -->
+    <input class="ba-range" type="range" min="0" max="100" value="56" aria-label="Before after slider">
+
+    <!--
+      Visible handle that follows the current slider position.
+      Видимый бегунок, который следует за текущей позицией слайдера.
+    -->
+    <div class="ba-handle"></div>
+  </div>
+</section>
+
+<!--
+  About section with a short explanation of the studio style and process.
+  Секция о студии с кратким описанием стиля и подхода к работе.
+-->
+<section id="about" class="about container">
+  <!--
+    Section title for the about area.
+    Заголовок секции о студии.
+  -->
+  <div class="section-title">
+    <p>About</p>
+    <h2>Digital Studio With Craft</h2>
+  </div>
+
+  <!--
+    About paragraph that explains what kind of projects the studio handles.
+    Абзац о студии, который объясняет, с какими проектами она работает.
+  -->
+  <p class="about-text">
+    DO Studio is focused on high-end photo editing, AI-assisted visual direction, and clean storytelling for personal brands and commercial projects. We combine classic retouch discipline with modern digital tools to produce premium results.
+  </p>
+</section>
+
+<!--
+  Order section with a simple project request form.
+  Секция заказа с простой формой заявки на проект.
+-->
+<section id="order" class="order container">
+  <!--
+    Section title for the order form.
+    Заголовок секции с формой заказа.
+  -->
+  <div class="section-title">
+    <p>Order</p>
+    <h2>Start Your Project</h2>
+  </div>
+
+  <!--
+    Order form; JavaScript handles submit locally and shows a success message.
+    Форма заказа; JavaScript обрабатывает отправку локально и показывает сообщение об успехе.
+  -->
+  <form id="orderForm" class="order-form">
+    <!--
+      Name field for the client.
+      Поле имени для клиента.
+    -->
+    <label>
+      Name
+      <input type="text" name="name" placeholder="Your name" required>
+    </label>
+
+    <!--
+      Email field for contacting the client.
+      Поле email для связи с клиентом.
+    -->
+    <label>
+      Email
+      <input type="email" name="email" placeholder="you@example.com" required>
+    </label>
+
+    <!--
+      Service selector for choosing the type of editing work.
+      Выбор услуги для указания типа обработки.
+    -->
+    <label>
+      Service
+      <select name="service" required>
+        <option value="" selected disabled>Select a service</option>
+        <option value="beauty-retouch">Beauty Retouch</option>
+        <option value="ai-art">AI Art / Creative Visual</option>
+        <option value="restoration">Photo Restoration</option>
+      </select>
+    </label>
+
+    <!--
+      Details field where the client describes the desired result.
+      Поле деталей, где клиент описывает желаемый результат.
+    -->
+    <label>
+      Project details
+      <textarea name="details" rows="5" placeholder="Tell us what result you want" required></textarea>
+    </label>
+
+    <!--
+      Submit button and status message area for form feedback.
+      Кнопка отправки и область статуса для ответа формы.
+    -->
+    <button type="submit" class="btn btn-primary">Send Request</button>
+    <p id="formStatus" class="form-status" aria-live="polite"></p>
+  </form>
+</section>
+</main>
+
+<!--
+  Footer with a short final line about the studio.
+  Подвал сайта с короткой финальной фразой о студии.
+-->
+<footer class="footer container">
+  <p>DO Studio. Premium photo editing and digital art.</p>
+</footer>
+
+<!--
+  JavaScript file that powers the mobile menu, slider, and form behavior.
+  JavaScript-файл, который управляет мобильным меню, слайдером и формой.
+-->
+<script src="script.js"></script>
+
+</body>
+</html>
