@@ -115,13 +115,51 @@ header {
   color: var(--accent);
 }
 
+.header-auth {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-auth-user {
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #c9c3dc;
+  font-size: 12px;
+}
+
+.header-auth-btn {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #ece8f8;
+  padding: 8px 12px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.24s ease, border-color 0.24s ease, background-color 0.24s ease;
+}
+
+.header-auth-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 79, 216, 0.46);
+}
+
+.header-auth-btn-primary {
+  border-color: rgba(255, 79, 216, 0.5);
+  background: linear-gradient(110deg, rgba(255, 79, 216, 0.28), rgba(144, 93, 255, 0.26));
+}
+
 /* Burger button appears on smaller screens.
   Кнопка-бургер для небольших экранов. */
 .menu-toggle {
   display: none;
   width: 44px;
   height: 44px;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: 12px;
   background: transparent;
   cursor: pointer;
@@ -195,6 +233,7 @@ header {
   Градиентный акцент для текста. */
 .gradient {
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -221,6 +260,7 @@ header {
   padding: 14px 24px;
   border-radius: 14px;
   border: 0;
+  background: transparent;
   font-weight: 700;
   font-size: 14px;
   appearance: none;
@@ -242,6 +282,7 @@ header {
 }
 
 .btn-secondary {
+  background: rgba(255, 255, 255, 0.04);
   color: var(--text);
   box-shadow: inset 0 0 0 1px var(--line);
 }
@@ -287,7 +328,7 @@ header {
   object-fit: cover;
 }
 
-.hero-ba-slider {
+.ba-slider.hero-ba-slider {
   aspect-ratio: 823 / 1152;
   width: min(100%, 560px);
   height: auto;
@@ -335,7 +376,7 @@ header {
 .reasons,
 .portfolio,
 .reviews,
-.about,
+.faq,
 .order {
   padding-top: 82px;
   padding-bottom: 82px;
@@ -453,6 +494,7 @@ header {
 .work-card {
   flex: 0 0 var(--portfolio-card-width);
   position: relative;
+  cursor: pointer;
   border-radius: var(--radius-lg);
   overflow: hidden;
   height: clamp(380px, 42vw, 575px);
@@ -474,6 +516,11 @@ header {
 .work-card:hover img {
   transform: scale(1.08);
   filter: saturate(1.1);
+}
+
+.work-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* Overlay content that softly appears over image.
@@ -516,6 +563,91 @@ header {
   font-size: 11px;
   letter-spacing: 1px;
   text-transform: uppercase;
+}
+
+/* Portfolio modal with extra samples and quick order action.
+  Модальное окно портфолио с доп. примерами и быстрым переходом к заказу. */
+.portfolio-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.portfolio-modal.is-open {
+  display: flex;
+}
+
+.portfolio-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 3, 6, 0.82);
+  backdrop-filter: blur(6px);
+}
+
+.portfolio-modal-dialog {
+  position: relative;
+  width: min(980px, 100%);
+  max-height: min(90vh, 920px);
+  overflow: auto;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(25, 21, 37, 0.96), rgba(11, 9, 17, 0.98));
+  box-shadow: 0 34px 80px rgba(0, 0, 0, 0.55);
+}
+
+.portfolio-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  background: rgba(8, 8, 12, 0.72);
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.portfolio-modal-dialog h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1.04;
+  margin-bottom: 8px;
+}
+
+.portfolio-modal-subtitle {
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+
+.portfolio-modal-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.portfolio-modal-gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  object-fit: cover;
+  display: block;
+}
+
+.portfolio-modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
 }
 
 /* Before/After slider shell.
@@ -633,55 +765,510 @@ header {
   right: 10px;
 }
 
-.about-text {
-  max-width: 780px;
+/* Reviews block: stats, filter, cards and submit form.
+  Блок отзывов: статистика, фильтр, карточки и форма отправки. */
+.reviews-stats {
+  display: grid;
+  grid-template-columns: auto 1fr minmax(250px, 310px);
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(25, 21, 37, 0.8), rgba(10, 8, 15, 0.9));
+}
+
+.reviews-rating-value {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(34px, 5vw, 48px);
+  line-height: 1;
+}
+
+.reviews-stars {
+  color: #ff94eb;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+.reviews-rating-meta p {
   color: var(--text-muted);
-  font-size: clamp(16px, 2vw, 21px);
+  font-size: 14px;
 }
 
-/* Reviews layout with testimonials and gated review form.
-  Макет отзывов с карточками клиентов и формой после заказа. */
-.reviews-layout {
-  max-width: 980px;
+.reviews-filter {
+  display: grid;
+  gap: 8px;
+  color: #d9d3ea;
+  font-size: 14px;
 }
 
-.reviews-list {
+.reviews-controls {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px);
+  justify-content: end;
+  gap: 10px;
+}
+
+.reviews-carousel-controls {
+  display: none;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.reviews-carousel-btn {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.24s ease, border-color 0.24s ease, opacity 0.24s ease;
+}
+
+.reviews-carousel-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 79, 216, 0.42);
+}
+
+.reviews-carousel-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.reviews-filter select {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  font: inherit;
+}
+
+.reviews-filter select option {
+  background: #120f1b;
+  color: #f3efff;
+}
+
+.reviews-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
+  margin-bottom: 22px;
 }
 
 .review-card {
-  min-height: 240px;
-  padding: 22px;
+  padding: 18px;
   border: 1px solid var(--line);
   border-radius: 18px;
-  background: linear-gradient(180deg, rgba(25, 21, 37, 0.82), rgba(10, 8, 15, 0.88));
+  background: linear-gradient(180deg, rgba(24, 20, 35, 0.85), rgba(9, 8, 14, 0.92));
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.review-topline {
+.review-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 79, 216, 0.42);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.3);
+}
+
+.review-head {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.review-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.review-avatar-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+  color: #fff;
+}
+
+.review-meta strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.review-meta span {
+  color: #a69fbe;
+  font-size: 12px;
+}
+
+.review-rating {
+  color: #ff94eb;
+  font-size: 13px;
+  letter-spacing: 1.2px;
+}
+
+.review-text {
+  color: #d7d1e8;
+  margin-bottom: 14px;
+}
+
+.review-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
-  margin-bottom: 38px;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
-.review-topline strong {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 20px;
-}
-
-.review-topline span {
-  color: #ff93ea;
-  font-size: 11px;
-  font-weight: 700;
+.review-service {
+  font-size: 12px;
   letter-spacing: 1px;
   text-transform: uppercase;
+  color: #ff93ea;
 }
 
-.review-card p {
+.review-date {
+  font-size: 12px;
+  color: #a69fbe;
+}
+
+.review-media {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.review-media-item {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.review-media-item img,
+.review-media-item video {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  display: block;
+}
+
+.review-file-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 10px;
+  font-size: 12px;
+  color: #e3ddf1;
+}
+
+.reviews-empty {
+  grid-column: 1 / -1;
+  padding: 26px;
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
   color: var(--text-muted);
+  text-align: center;
+}
+
+.reviews-form-wrap {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(22, 18, 32, 0.86), rgba(11, 9, 16, 0.92));
+}
+
+.reviews-form-wrap h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.reviews-form-wrap > p {
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.reviews-auth-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.review-composer.is-hidden,
+.auth-form.is-hidden {
+  display: none;
+}
+
+.review-form {
+  display: grid;
+  gap: 14px;
+}
+
+.review-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.review-form label {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  color: #d9d3ea;
+}
+
+.review-form input,
+.review-form select,
+.review-form textarea {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  font: inherit;
+  outline: none;
+}
+
+.review-form select option {
+  background: #120f1b;
+}
+
+.review-form input:focus,
+.review-form select:focus,
+.review-form textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 79, 216, 0.15);
+}
+
+/* Auth modal for review access.
+  Модалка авторизации для доступа к форме отзыва. */
+.auth-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.auth-modal.is-open {
+  display: flex;
+}
+
+.auth-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 3, 6, 0.84);
+  backdrop-filter: blur(6px);
+}
+
+.auth-modal-dialog {
+  position: relative;
+  width: min(520px, 100%);
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(22, 18, 34, 0.96), rgba(10, 8, 16, 0.98));
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.45);
+}
+
+.auth-modal-dialog h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 34px;
+  margin-bottom: 8px;
+}
+
+.auth-modal-dialog > p {
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.auth-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  background: rgba(8, 8, 12, 0.72);
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.auth-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.auth-tab {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #d7d1e8;
+  font: inherit;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.auth-tab.is-active {
+  color: #fff;
+  border-color: rgba(255, 79, 216, 0.45);
+  background: rgba(255, 79, 216, 0.14);
+}
+
+.auth-form {
+  display: grid;
+  gap: 12px;
+}
+
+.auth-form label {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  color: #d9d3ea;
+}
+
+.auth-form input,
+.auth-form textarea {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  font: inherit;
+  outline: none;
+  resize: vertical;
+}
+
+.auth-form input:focus,
+.auth-form textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 79, 216, 0.15);
+}
+
+.support-modal-dialog {
+  width: min(620px, 100%);
+}
+
+.support-form {
+  gap: 14px;
+}
+
+/* FAQ accordion section in dark premium style.
+  FAQ-аккордеон в темном premium стиле. */
+.faq-list {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.faq-item {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(22, 18, 34, 0.72), rgba(10, 8, 16, 0.84));
+  overflow: hidden;
+  transition: border-color 0.28s ease, background-color 0.28s ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(255, 79, 216, 0.4);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  border: 0;
+  background: transparent;
+  color: #f3efff;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-icon {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: #ff93ea;
+  transform: translateY(-50%);
+  transition: transform 0.26s ease, opacity 0.26s ease;
+}
+
+.faq-icon::after {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.faq-item.is-open .faq-icon::after {
+  transform: translateY(-50%) rotate(90deg) scaleX(0);
+  opacity: 0;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.34s ease;
+}
+
+.faq-answer-inner {
+  padding: 0 20px 18px;
+}
+
+.faq-answer p {
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+.faq-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(17, 14, 25, 0.8), rgba(11, 9, 17, 0.88));
+}
+
+.faq-cta p {
+  color: #ddd8ec;
 }
 
 /* Order form card.
@@ -774,6 +1361,24 @@ header {
 /* Tablet and small laptop adjustments.
   Адаптация для планшетов и небольших ноутбуков. */
 @media (max-width: 1080px) {
+  .nav {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .menu-toggle {
+    order: 1;
+  }
+
+  .logo {
+    order: 2;
+  }
+
+  .header-auth {
+    order: 3;
+    margin-left: auto;
+  }
+
   .hero {
     grid-template-columns: 1fr;
     gap: 38px;
@@ -788,7 +1393,46 @@ header {
     --portfolio-card-width: min(80vw, 640px);
   }
 
+  .reviews-stats {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .reviews-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .reviews-grid {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    padding-top: 4px;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+
+  .reviews-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .reviews-grid .review-card,
+  .reviews-grid .reviews-empty {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+  }
+
+  .reviews-carousel-controls {
+    display: flex;
+  }
+
   .order-btn {
+    display: none;
+  }
+
+  .header-auth-user {
     display: none;
   }
 
@@ -858,10 +1502,19 @@ header {
     font-size: 30px;
   }
 
+  .header-auth {
+    gap: 6px;
+  }
+
+  .header-auth-btn {
+    padding: 7px 10px;
+    font-size: 11px;
+  }
+
   .reasons,
   .portfolio,
   .reviews,
-  .about,
+  .faq,
   .order {
     padding-top: 64px;
     padding-bottom: 64px;
@@ -880,19 +1533,57 @@ header {
     margin-bottom: 22px;
   }
 
-  .reviews-list {
+  .review-card {
+    padding: 16px;
+  }
+
+  .review-head {
+    grid-template-columns: 42px 1fr;
+  }
+
+  .review-rating {
+    grid-column: 1 / -1;
+  }
+
+  .review-media {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .review-form-row {
     grid-template-columns: 1fr;
   }
 
-  .review-card {
-    min-height: auto;
-    padding: 20px;
+  .faq-question {
+    font-size: 16px;
+    padding: 16px;
   }
 
-  .review-topline {
-    align-items: flex-start;
-    flex-direction: column;
-    margin-bottom: 24px;
+  .faq-answer-inner {
+    padding: 0 16px 16px;
+  }
+
+  .faq-cta {
+    padding: 16px;
+  }
+
+  .faq-cta .btn {
+    width: 100%;
+  }
+
+  .reviews-auth-actions .btn {
+    width: 100%;
+  }
+
+  .auth-modal {
+    padding: 12px;
+  }
+
+  .auth-modal-dialog {
+    padding: 16px;
+  }
+
+  .auth-modal-dialog h3 {
+    font-size: 28px;
   }
 
   .portfolio-head {
@@ -906,6 +1597,26 @@ header {
   .portfolio-track {
     gap: 16px;
     padding-bottom: 8px;
+  }
+
+  .portfolio-modal {
+    padding: 12px;
+  }
+
+  .portfolio-modal-dialog {
+    padding: 16px;
+  }
+
+  .portfolio-modal-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-modal-actions {
+    justify-content: stretch;
+  }
+
+  .portfolio-modal-actions .btn {
+    width: 100%;
   }
 
   .work-card {

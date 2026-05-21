@@ -4,7 +4,7 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DO Studio</title>
+  <title>nevodstudio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
       Логотип сайта, который отображается слева в шапке.
     -->
     <div class="logo">
-      DO
+      NEVOD
       <span>STUDIO</span>
     </div>
 
@@ -46,16 +46,15 @@
     <nav class="menu">
       <a href="#home">Home</a>
       <a href="#portfolio">Portfolio</a>
-      <a href="#compare">Before / After</a>
-      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
       <a href="#order">Order</a>
     </nav>
 
-    <!--
-      Header call-to-action button that sends the visitor to the order form.
-      Кнопка призыва к действию в шапке, которая ведет к форме заказа.
-    -->
-    <a href="#order" class="order-btn">Order Editing</a>
+    <div class="header-auth" aria-label="Account actions">
+      <span id="headerAuthUser" class="header-auth-user" aria-live="polite"></span>
+      <button type="button" class="header-auth-btn" id="headerSignInBtn">Sign in</button>
+    </div>
 
   </div>
 </header>
@@ -155,16 +154,21 @@
   <div class="hero-image">
 
     <!--
-      Image card that holds the main portrait and before/after labels.
-      Карточка изображения с главным портретом и метками до/после.
+      Hero before/after slider using local images from the project.
+      Hero-слайдер до/после на локальных изображениях из проекта.
     -->
-    <div class="image-card">
+    <div class="ba-slider hero-ba-slider" data-start="50">
+      <img class="ba-before" src="images/1.jpg" alt="Before retouch portrait">
 
-      <span class="before">Before</span>
-      <span class="after">After</span>
+      <div class="ba-after-wrap">
+        <img class="ba-after" src="images/2.jpg" alt="After retouch portrait">
+      </div>
 
-      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1400&auto=format&fit=crop" alt="">
+      <div class="ba-label ba-label-before">Before</div>
+      <div class="ba-label ba-label-after">After</div>
 
+      <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Hero before after slider">
+      <div class="ba-handle"></div>
     </div>
 
   </div>
@@ -204,125 +208,412 @@
 
     <div class="portfolio-track">
 
-    <!--
-      Portfolio card for beauty retouching; the overlay appears on hover.
-      Карточка ретуши; затемнение с текстом появляется при наведении.
-    -->
-    <div class="work-card">
-      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1200&auto=format&fit=crop">
+    <div class="work-card" data-service="appearance-retouching">
+      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1400&auto=format&fit=crop" alt="Appearance Retouching sample">
       <div class="overlay">
-        <h3>Beauty Retouch</h3>
-        <p>Professional skin & color editing</p>
-        <span class="work-tag">Skin / Color</span>
+        <h3>Appearance Retouching</h3>
+        <p>Natural skin cleanup, color balance and detail polish</p>
+        <span class="work-tag">Portrait Retouch</span>
       </div>
     </div>
 
-    <!--
-      Portfolio card for AI art and creative visual work.
-      Карточка AI-art и креативной визуальной обработки.
-    -->
-    <div class="work-card">
-      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop">
+    <div class="work-card" data-service="ai-art-ai-photoshoots">
+      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1400&auto=format&fit=crop" alt="AI Art and AI Photoshoots sample">
       <div class="overlay">
-        <h3>AI Art</h3>
-        <p>Creative AI generated visuals</p>
-        <span class="work-tag">Prompt Design</span>
+        <h3>AI Art / AI Photoshoots</h3>
+        <p>Concept visuals, stylized sets and AI-driven direction</p>
+        <span class="work-tag">AI Visuals</span>
       </div>
     </div>
 
-    <!--
-      Portfolio card for old photo restoration and repair.
-      Карточка восстановления и ремонта старых фотографий.
-    -->
-    <div class="work-card">
-      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop">
+    <div class="work-card" data-service="photo-restoration">
+      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1400&auto=format&fit=crop" alt="Photo Restoration sample">
       <div class="overlay">
-        <h3>Restoration</h3>
-        <p>Old photo restoration and repair</p>
+        <h3>Photo Restoration</h3>
+        <p>Repairing scratches, noise and faded tones in old photos</p>
         <span class="work-tag">Archive Repair</span>
       </div>
     </div>
 
+    <div class="work-card" data-service="photo-manipulation-collages">
+      <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1400&auto=format&fit=crop" alt="Photo Manipulation and Collages sample">
+      <div class="overlay">
+        <h3>Photo Manipulation &amp; Collages</h3>
+        <p>Creative compositing, scene blending and surreal edits</p>
+        <span class="work-tag">Compositing</span>
+      </div>
+    </div>
+
+    <div class="work-card" data-service="face-swap">
+      <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?q=80&w=1400&auto=format&fit=crop" alt="Face Swap sample">
+      <div class="overlay">
+        <h3>Face Swap</h3>
+        <p>Clean and realistic face replacement for creative tasks</p>
+        <span class="work-tag">Face Edit</span>
+      </div>
+    </div>
+
+    <div class="work-card" data-service="photo-quality-enhancement">
+      <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1400&auto=format&fit=crop" alt="Photo Quality Enhancement sample">
+      <div class="overlay">
+        <h3>Photo Quality Enhancement</h3>
+        <p>Sharper details, cleaner texture and improved clarity</p>
+        <span class="work-tag">Enhancement</span>
+      </div>
+    </div>
+
+    <div class="work-card" data-service="covers-design">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1400&auto=format&fit=crop" alt="Covers and Design sample">
+      <div class="overlay">
+        <h3>Covers &amp; Design</h3>
+        <p>Cover visuals and layouts for social or music releases</p>
+        <span class="work-tag">Design Work</span>
+      </div>
+    </div>
+
+    <div class="work-card" data-service="social-media-editing">
+      <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1400&auto=format&fit=crop" alt="Social Media Editing sample">
+      <div class="overlay">
+        <h3>Social Media Editing</h3>
+        <p>Content-ready edits optimized for feed and story formats</p>
+        <span class="work-tag">Content Edit</span>
+      </div>
+    </div>
+
+    <div class="work-card" data-service="creative-digital-editing">
+      <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1400&auto=format&fit=crop" alt="Creative Digital Editing sample">
+      <div class="overlay">
+        <h3>Creative Digital Editing</h3>
+        <p>Bold stylization and artistic post-production concepts</p>
+        <span class="work-tag">Creative Edit</span>
+      </div>
+    </div>
+
+    <div class="work-card" data-service="other">
+      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1400&auto=format&fit=crop" alt="Other photo editing services sample">
+      <div class="overlay">
+        <h3>Other</h3>
+        <p>Custom requests for unique digital and retouch workflows</p>
+        <span class="work-tag">Custom Work</span>
+      </div>
+    </div>
+
     </div>
   </div>
 
 </section>
 
 <!--
-  Before/after comparison section with an interactive image slider.
-  Секция сравнения до/после с интерактивным слайдером изображения.
+  Portfolio modal: opens on card click and shows additional sample works.
+  Модальное окно портфолио: открывается по клику на карточку и показывает дополнительные примеры.
 -->
-<section id="compare" class="compare container">
-  <!--
-    Section title for the comparison area.
-    Заголовок секции сравнения.
-  -->
+<div class="portfolio-modal" id="portfolioModal" aria-hidden="true">
+  <div class="portfolio-modal-backdrop" data-modal-close></div>
+
+  <div class="portfolio-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="portfolioModalTitle">
+    <button class="portfolio-modal-close" type="button" data-modal-close aria-label="Close portfolio details">&times;</button>
+
+    <h3 id="portfolioModalTitle">Service title</h3>
+    <p class="portfolio-modal-subtitle">More sample works for this category</p>
+
+    <div class="portfolio-modal-gallery" id="portfolioModalGallery"></div>
+
+    <div class="portfolio-modal-actions">
+      <button type="button" class="btn btn-secondary" data-modal-close>Close</button>
+      <button type="button" class="btn btn-primary" id="portfolioModalOrder">Order this service</button>
+    </div>
+  </div>
+</div>
+
+<!--
+  Reviews section with rating stats, filters, cards and a gated review form.
+  Секция отзывов со статистикой рейтинга, фильтрами, карточками и формой с проверкой заказа.
+-->
+<section id="reviews" class="reviews container">
   <div class="section-title">
-    <p>Before / After</p>
-    <h2>See The Difference</h2>
+    <p>Reviews</p>
+    <h2>What Clients Say</h2>
   </div>
 
-  <!--
-    Slider wrapper; CSS reads --position and JavaScript updates it from the range input.
-    Обертка слайдера; CSS читает --position, а JavaScript меняет его через range input.
-  -->
-  <div class="ba-slider" data-start="56">
-    <!--
-      Base image layer that represents the original photo.
-      Базовый слой изображения, который показывает оригинальное фото.
-    -->
-    <img class="ba-before" src="https://images.unsplash.com/photo-1464863979621-258859e62245?q=80&w=1400&auto=format&fit=crop" alt="Original portrait">
+  <div class="reviews-stats" aria-label="Review summary stats">
+    <div class="reviews-rating-value" id="reviewsAverage">4.9</div>
+    <div class="reviews-rating-meta">
+      <div class="reviews-stars" id="reviewsStars" aria-label="Average rating stars">★★★★★</div>
+      <p><span id="reviewsCount">0</span> total reviews</p>
+    </div>
+    <div class="reviews-controls">
+      <label class="reviews-filter">
+        Filter reviews
+        <select id="reviewsSort">
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="rating-desc">Rating: 5 to 1</option>
+          <option value="rating-asc">Rating: 1 to 5</option>
+        </select>
+      </label>
+    </div>
+  </div>
 
-    <!--
-      Top image layer that is clipped to reveal the edited version.
-      Верхний слой изображения, который обрезается и показывает обработанную версию.
-    -->
-    <div class="ba-after-wrap">
-      <img class="ba-after" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1400&auto=format&fit=crop" alt="Edited portrait">
+  <div class="reviews-carousel-controls" aria-label="Reviews carousel controls">
+    <button class="reviews-carousel-btn" type="button" id="reviewsPrevBtn" aria-label="Previous review">
+      <span aria-hidden="true">&larr;</span>
+    </button>
+    <button class="reviews-carousel-btn" type="button" id="reviewsNextBtn" aria-label="Next review">
+      <span aria-hidden="true">&rarr;</span>
+    </button>
+  </div>
+
+  <div class="reviews-grid" id="reviewsList" aria-live="polite"></div>
+
+  <div class="reviews-form-wrap">
+    <h3>Leave A Review</h3>
+    <p id="reviewAuthState">Sign in to leave a review. Reviews are still limited to clients who submitted an order.</p>
+
+    <div class="reviews-auth-actions">
+      <button type="button" class="btn btn-primary" id="openReviewComposerBtn">Leave a review</button>
+      <button type="button" class="btn btn-secondary" id="logoutReviewUserBtn">Sign out</button>
     </div>
 
-    <!--
-      Visual labels for the two sides of the comparison.
-      Визуальные метки для двух сторон сравнения.
-    -->
-    <div class="ba-label ba-label-before">Before</div>
-    <div class="ba-label ba-label-after">After</div>
+    <div id="reviewComposer" class="review-composer is-hidden">
+      <form id="reviewForm" class="review-form">
+        <label>
+          Name
+          <input type="text" name="name" placeholder="Your name" required>
+        </label>
 
-    <!--
-      Invisible range input that captures dragging and controls the divider.
-      Невидимый range input ловит перетаскивание и управляет разделителем.
-    -->
-    <input class="ba-range" type="range" min="0" max="100" value="56" aria-label="Before after slider">
+        <div class="review-form-row">
+          <label>
+            Service
+            <select name="service" required>
+              <option value="" selected disabled>Select a service</option>
+              <option value="appearance-retouching">Appearance Retouching</option>
+              <option value="ai-art-ai-photoshoots">AI Art / AI Photoshoots</option>
+              <option value="photo-restoration">Photo Restoration</option>
+              <option value="photo-manipulation-collages">Photo Manipulation &amp; Collages</option>
+              <option value="face-swap">Face Swap</option>
+              <option value="photo-quality-enhancement">Photo Quality Enhancement</option>
+              <option value="covers-design">Covers &amp; Design</option>
+              <option value="social-media-editing">Social Media Editing</option>
+              <option value="creative-digital-editing">Creative Digital Editing</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
 
-    <!--
-      Visible handle that follows the current slider position.
-      Видимый бегунок, который следует за текущей позицией слайдера.
-    -->
-    <div class="ba-handle"></div>
+          <label>
+            Rating
+            <select name="rating" required>
+              <option value="5">5 - Excellent</option>
+              <option value="4">4 - Great</option>
+              <option value="3">3 - Good</option>
+              <option value="2">2 - Fair</option>
+              <option value="1">1 - Poor</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          Review text
+          <textarea name="text" rows="4" placeholder="Share your experience" required></textarea>
+        </label>
+
+        <label>
+          Avatar URL (optional)
+          <input type="url" name="avatar" placeholder="https://example.com/avatar.jpg">
+        </label>
+
+        <label>
+          Attach media (images, videos, files)
+          <input type="file" name="media" multiple accept="image/*,video/*,.pdf,.doc,.docx,.zip,.rar">
+        </label>
+
+        <button type="submit" class="btn btn-primary">Publish Review</button>
+        <p id="reviewStatus" class="form-status" aria-live="polite"></p>
+      </form>
+    </div>
   </div>
 </section>
 
 <!--
-  About section with a short explanation of the studio style and process.
-  Секция о студии с кратким описанием стиля и подхода к работе.
+  Review auth modal with login/registration by email and password.
+  Модальное окно авторизации для отзывов с регистрацией и входом по email/паролю.
 -->
-<section id="about" class="about container">
-  <!--
-    Section title for the about area.
-    Заголовок секции о студии.
-  -->
+<div class="auth-modal" id="reviewAuthModal" aria-hidden="true">
+  <div class="auth-modal-backdrop" data-auth-close></div>
+
+  <div class="auth-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="reviewAuthTitle">
+    <button class="auth-modal-close" type="button" data-auth-close aria-label="Close auth dialog">&times;</button>
+    <h3 id="reviewAuthTitle">Account access</h3>
+    <p>Create an account or sign in to leave a review.</p>
+
+    <div class="auth-tabs">
+      <button type="button" class="auth-tab is-active" data-auth-tab="login">Sign in</button>
+      <button type="button" class="auth-tab" data-auth-tab="register">Register</button>
+    </div>
+
+    <form id="reviewLoginForm" class="auth-form" data-auth-panel="login">
+      <label>
+        Email
+        <input type="email" name="email" placeholder="you@example.com" required>
+      </label>
+      <label>
+        Password
+        <input type="password" name="password" placeholder="Your password" minlength="6" required>
+      </label>
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
+
+    <form id="reviewRegisterForm" class="auth-form is-hidden" data-auth-panel="register">
+      <label>
+        Email
+        <input type="email" name="email" placeholder="you@example.com" required>
+      </label>
+      <label>
+        Password
+        <input type="password" name="password" placeholder="Create password (min 6 chars)" minlength="6" required>
+      </label>
+      <button type="submit" class="btn btn-primary">Create account</button>
+    </form>
+
+    <p id="reviewAuthStatus" class="form-status" aria-live="polite"></p>
+  </div>
+</div>
+
+<!--
+  FAQ section with accordion behavior and support call-to-action.
+  Секция FAQ с аккордеоном и кнопкой связи с поддержкой.
+-->
+<section id="faq" class="faq container">
   <div class="section-title">
-    <p>About</p>
-    <h2>Digital Studio With Craft</h2>
+    <p>FAQ</p>
+    <h2>Frequently Asked Questions</h2>
   </div>
 
-  <!--
-    About paragraph that explains what kind of projects the studio handles.
-    Абзац о студии, который объясняет, с какими проектами она работает.
-  -->
-  <p class="about-text">
-    DO Studio is focused on high-end photo editing, AI-assisted visual direction, and clean storytelling for personal brands and commercial projects. We combine classic retouch discipline with modern digital tools to produce premium results.
-  </p>
+  <div class="faq-list" id="faqList">
+    <article class="faq-item is-open">
+      <button class="faq-question" type="button" aria-expanded="true">
+        <span>What services do you provide?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>We specialize in professional photo editing, AI art, retouching, photo restoration, collages, face swaps, covers, and digital design.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        <span>How long does editing take?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>It depends on the complexity of the project. Simple edits can be completed within a few hours, while more complex work may take 1 to 3 days.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        <span>How can I place an order?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>You can upload your photo through the website form and describe what you would like us to do.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        <span>Do you work with AI?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Yes. We use modern AI tools to create and enhance images while maintaining manual refinement and quality control.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        <span>Can I order content for social media?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Yes. We create social media content, covers, avatars, promotional visuals, and other digital materials.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        <span>Are my photos kept confidential?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Yes. All client photos and materials remain confidential and are never published without permission.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        <span>Can you restore old or damaged photos?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Yes. We restore old, blurry, and damaged photographs.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        <span>Which file formats do you accept?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>JPG, PNG, WEBP, PSD, and other popular image formats.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        <span>Can I request something custom or unusual?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Yes. You can describe any idea, and we will do our best to find the right solution.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        <span>Why choose NEVOD STUDIO?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>10+ years of experience, hundreds of thousands of followers, our own creative team, and attention to detail in every project.</p>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="faq-cta">
+    <p>Didn’t find the answer you were looking for? Contact us anytime.</p>
+    <button type="button" class="btn btn-secondary" id="openSupportModalBtn">Contact Support</button>
+  </div>
 </section>
 
 <!--
@@ -370,9 +661,16 @@
       Service
       <select name="service" required>
         <option value="" selected disabled>Select a service</option>
-        <option value="beauty-retouch">Beauty Retouch</option>
-        <option value="ai-art">AI Art / Creative Visual</option>
-        <option value="restoration">Photo Restoration</option>
+        <option value="appearance-retouching">Appearance Retouching</option>
+        <option value="ai-art-ai-photoshoots">AI Art / AI Photoshoots</option>
+        <option value="photo-restoration">Photo Restoration</option>
+        <option value="photo-manipulation-collages">Photo Manipulation &amp; Collages</option>
+        <option value="face-swap">Face Swap</option>
+        <option value="photo-quality-enhancement">Photo Quality Enhancement</option>
+        <option value="covers-design">Covers &amp; Design</option>
+        <option value="social-media-editing">Social Media Editing</option>
+        <option value="creative-digital-editing">Creative Digital Editing</option>
+        <option value="other">Other</option>
       </select>
     </label>
 
@@ -393,6 +691,40 @@
     <p id="formStatus" class="form-status" aria-live="polite"></p>
   </form>
 </section>
+
+<!--
+  Support modal for FAQ CTA: register with email/password and send a question.
+  Модалка поддержки из FAQ: регистрация по email/паролю и отправка вопроса.
+-->
+<div class="auth-modal" id="supportModal" aria-hidden="true">
+  <div class="auth-modal-backdrop" data-support-close></div>
+
+  <div class="auth-modal-dialog support-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="supportModalTitle">
+    <button class="auth-modal-close" type="button" data-support-close aria-label="Close support dialog">&times;</button>
+    <h3 id="supportModalTitle">Contact Support</h3>
+    <p>Create your account and send a question to our admin team.</p>
+
+    <form id="supportForm" class="auth-form support-form">
+      <label>
+        Email
+        <input type="email" name="email" placeholder="you@example.com" required>
+      </label>
+
+      <label>
+        Password
+        <input type="password" name="password" placeholder="Create password (min 6 chars)" minlength="6" required>
+      </label>
+
+      <label>
+        Your question
+        <textarea name="question" rows="4" placeholder="Type your question for admin" minlength="10" required></textarea>
+      </label>
+
+      <button type="submit" class="btn btn-primary">Register &amp; Send Question</button>
+      <p id="supportStatus" class="form-status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
 </main>
 
 <!--
@@ -400,7 +732,7 @@
   Подвал сайта с короткой финальной фразой о студии.
 -->
 <footer class="footer container">
-  <p>DO Studio. Premium photo editing and digital art.</p>
+  <p>nevodstudio. Premium photo editing and digital art.</p>
 </footer>
 
 <!--
